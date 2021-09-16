@@ -1,0 +1,17 @@
+.input__text{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    height: 27px;
+    max-width: 358px;
+    width: 100%;
+    font-size: 14px;
+    line-height: 17px;
+    border: none;
+    border-bottom: 1px solid rgba(00,00,00,0.2);
+    margin-top: 30px;
+}
+.input__text:first-child{
+    margin-top: 0;
+}

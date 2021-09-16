@@ -1,0 +1,14 @@
+.input__text-btn{
+    margin: 0 auto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+    color: #FFFFFF;
+}
+@media screen and (max-width: 360px){
+    .input__text-btn{
+        font-size: 14px;
+        line-height: 17px;
+    }
+}
