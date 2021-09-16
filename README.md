@@ -28,4 +28,4 @@
 
 ---
 
-[Ссылка на gh-pages](https://solidfalkon.github.io/mesto//index.html)
+[Ссылка на gh-pages](https://solidfalkon.github.io/mesto/index.html)
