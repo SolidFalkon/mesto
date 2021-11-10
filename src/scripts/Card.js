@@ -1,8 +1,8 @@
 export default class Card{
-    constructor({data, handleFormSubmit}, cardSelector){
+    constructor({data, handleCardClick}, cardSelector){
         this._name = data.name;
         this._link = data.link;
-        this._handleFormSubmit = handleFormSubmit;
+        this._handleCardClick = handleCardClick;
         this._cardSelector = cardSelector;
     }
     _getTemplate() {
@@ -24,7 +24,7 @@ export default class Card{
         this._elementBlock.querySelector('.element__like').addEventListener("click", () => {
             this._like()});
         this._elementBlock.querySelector('.element__image-button').addEventListener("click", () => {
-            this._handleFormSubmit()});
+            this._handleCardClick()});
     }
     _like(){
         const likeButoon = this._elementBlock.querySelector('.element__like')

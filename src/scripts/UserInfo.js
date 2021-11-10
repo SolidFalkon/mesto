@@ -1,21 +1,19 @@
-const popupEdit = document.querySelector('.input_profile')
-const popupFormName = popupEdit.querySelector ('.input__text_type_name') 
-const popupFormProfession = popupEdit.querySelector ('.input__text_type_profession')
-
 export class UserInfo{
-  constructor({name, profession}){
-    this._name = name;
-    this._profession = profession;
+  constructor({nameSelector, professionSelector}){
+    this._name =  document.querySelector(nameSelector);
+    this._profession = document.querySelector(professionSelector);
   }
 
   getUserInfo(){
-    popupFormName.value = this._name.textContent
-    popupFormProfession.profession = this._profession.textContent
+    const userName =  this._name.textContent;
+    const userJob =  this._profession.textContent;
+    const userData = {userName, userJob}
+    return userData
   }
 
-  setUserInfo(){
-    this._name.textContent = popupFormName.value
-    this._profession.textContent = popupFormProfession.value
+  setUserInfo( name, job ){
+    this._name.textContent = name;
+    this._profession.textContent = job;
   }
 
 }

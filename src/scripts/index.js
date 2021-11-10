@@ -4,60 +4,21 @@ import {Section} from './Section.js';
 import { PopupWithImage } from './PopupWithImage.js';
 import { PopupWithForm } from './PopupWithForm.js';
 import { UserInfo } from './UserInfo.js'
+import { popupProfile, popupElement, popupImage, editButton, profileName,
+   profileProfession, inputName, inputProfession, inputNameImg,
+   inputImg, elementsBlock, addButton, config, initialCards} from '../utils/constants.js';
 //Импорты вебпака
 import "../pages/index.css";
 
-const main = document.querySelector('.main');
-const popupProfile = main.querySelector('.profile-popup');
-const popupElement = main.querySelector('.element-popup');
-const popupImage = main.querySelector('.popup-image');
-const editButton = main.querySelector('.profile__edit-button');
-const profileName = main.querySelector('.profile__name');
-const profileProfession = main.querySelector('.profile__profession');
-const inputNameImg = main.querySelector('.input__text_type_nameImg');
-const inputImg = main.querySelector('.input__text_type_img');
-const elementsBlock = document.querySelector('.elements');
-const addButton = main.querySelector('.profile__add-button');
-const config = {
-  inputSelector: '.input__text',
-  submitButtonSelector: '.input__save-btn',
-  inactiveButtonClass: 'input__save-btn_disabled',
-  inputErrorClass: 'input__text_type_error',
-}
-
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
+const openPopupImage = new PopupWithImage(popupImage)
+openPopupImage.setEventListeners();
 
 function createCard(item){
+  console.log(item);
   const card = new Card({
     data: item,
-    handleFormSubmit: (event) =>{
-      const openPopupImage = new PopupWithImage(item, popupImage)
-      openPopupImage.open(event)
+    handleCardClick: () =>{
+      openPopupImage.open(item)
     }
   },
   '#element');
@@ -66,7 +27,9 @@ function createCard(item){
 }
 
 const onEditClick = () => {
-  userInform.getUserInfo();
+  const getUserInfo = userInform.getUserInfo();
+  inputName.value = getUserInfo.userName;
+  inputProfession.value = getUserInfo.userJob;
   openEditPopap.open();
 }
 
@@ -81,6 +44,7 @@ const openEditPopap =  new PopupWithForm({
     saveProfile(event)
   }
 }) 
+openEditPopap.setEventListeners();
 
 const openAddPopup =  new PopupWithForm({
   popupSelector: popupElement,
@@ -88,6 +52,7 @@ const openAddPopup =  new PopupWithForm({
     submitAddCardForm(event)
   }
 }) 
+openAddPopup.setEventListeners();
 
 //валидация формы фото
 const formAddImg = new FormValidator(config, '.input_element');
@@ -98,28 +63,19 @@ const formEditProfile = new FormValidator(config, '.input_profile');
 formEditProfile.enableValidation();
 
 const userInform = new UserInfo({
-  name: profileName,
-  profession: profileProfession,
+  nameSelector: profileName,
+  professionSelector: profileProfession,
 })
 
-const saveProfile = (evt) => {
-    evt.preventDefault();
-    userInform.setUserInfo()
+const saveProfile = (inputs) => {
+    userInform.setUserInfo(inputs.name, inputs.profession)
     openEditPopap.close()
 }
 
-const submitAddCardForm = (evt) => {
-  evt.preventDefault();
-  const card = 
-  {
-      name: inputNameImg.value,
-      link: inputImg.value
-  }
-  const element = createCard(card)
+const submitAddCardForm = (inputs) => {
+  const element = createCard(inputs)
   openAddPopup.close()
   elementsBlock.prepend(element);
-  inputNameImg.value = '';
-  inputImg.value = '';
 }
 
 const cardsList = new Section({
