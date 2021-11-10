@@ -75,14 +75,14 @@ const saveProfile = (inputs) => {
 const submitAddCardForm = (inputs) => {
   const element = createCard(inputs)
   openAddPopup.close()
-  elementsBlock.prepend(element);
+  cardsList.addItemPrepend(element)
 }
 
 const cardsList = new Section({
   items: initialCards,
   renderer:(item) => {
     const element = createCard(item) 
-    cardsList.addItem(element)
+    cardsList.addItemAppend(element)
   }
 },
 elementsBlock
