@@ -33,6 +33,7 @@ const onEditClick = () => {
 }
 
 const onAddClick = () => {
+  formAddImg.resetValidation();
   openAddPopup.open()
 }
 
