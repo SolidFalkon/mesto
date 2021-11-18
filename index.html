@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mesto</title>
+<link href="main.css" rel="stylesheet"></head>
+<body class="body">
+    <header class="header">
+        <div class="header__logo"></div>
+    </header>
+    <main class="main">
+        <section class="profile">
+            <img src="74c3c0fb802dcfa83abb.jpg" alt="Аватар профиля" class="profile__image">
+            <div class="profile__info">    
+                <h1 class="profile__name">Жак-Ив Кусто</h1>
+                <button type="button" class="profile__edit-button"></button>
+                <p class="profile__profession">Исследователь океана</p>              
+            </div>
+            <button type="button" class="profile__add-button">
+                <img src="d86bb2edc2f6eadb96b7.svg" alt="добавить" class="profile__add-button-img">
+            </button>
+        </section>
+        <section class="elements">
+            <template id="element">
+                <div class="element">
+                    <button type="button" class="element__delete"></button>
+                    <div type="button" class="element__image-block">
+                        <button type="button" class="element__image-button">
+                            <img src="b5aec35d291ebb0bd86b.jpg" alt="Карачаевск" class="element__image">
+                        </button>
+                    </div>
+                    <div class="element__description">
+                        <h2 class="element__text">Карачаевск</h2>
+                        <button type="button" class="element__like"></button>
+                    </div>
+                </div>
+            </template>
+        </section>
+        <div class="popup profile-popup">
+            <div class="popup__overlay"></div>
+            <div class="popup__container">
+                <button class="popup__close profile-close" type="button">
+                    <img src="ad98de32e342afafa118.svg" alt="Крестик" class="popup__cross-button">
+                </button>
+                <div class="popup__content">
+                    <h2 class="popup__title">Редактировать профиль</h2>
+                    <form class="input input_profile" name="form-input-profile">
+                        <input type="text" placeholder="Имя" class="input__text input__text_type_name" value="" id="name" name="name" minlength="2" maxlength="40" required>
+                        <span id="name-error" class="input__error"></span>
+                        <input type="text" placeholder="Профессия" class="input__text input__text_type_profession" value="" id="profession" name="profession" minlength="2" maxlength="200" required>
+                        <span id="profession-error" class="input__error"></span>
+                        <button type="submit" class="input__save-btn">
+                            Сохранить
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="popup element-popup">
+            <div class="popup__overlay"></div>
+            <div class="popup__container">
+                <button class="popup__close element-close" type="button">
+                    <img src="ad98de32e342afafa118.svg" alt="Крестик" class="popup__cross-button">
+                </button>
+                <div class="popup__content">
+                    <h2 class="popup__title">Новое место</h2>
+                    <form class="input input_element" name="form-input-element">
+                        <input type="text" placeholder="Название" class="input__text input__text_type_nameImg" value="" minlength="2" maxlength="30" id="nameImg" name="name" required>
+                        <span id="nameImg-error" class="input__error"></span>
+                        <input type="url" placeholder="Ссылка на картинку" class="input__text input__text_type_img" value="" id="img" name="link" required>
+                        <span id="img-error" class="input__error"></span>
+                        <button type="submit" class="input__save-btn">
+                            Создать
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="popup popup-image">
+            <div class="popup__overlay"></div>
+            <div class="popup-image__container">
+                <button class="popup__close image-close" type="button">
+                    <img src="ad98de32e342afafa118.svg" alt="Крестик" class="popup__cross-button">
+                </button>
+                <img src="#" alt="Картинка" class="popup-image__image">
+                <p class="popup-image__text"></p>
+            </div>
+        </div>
+    </main>
+    <footer class="footer">
+        <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
+    </footer>
+<script defer src="main.js"></script></body>
+</html>
