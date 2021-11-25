@@ -45,9 +45,6 @@ export default class Card{
         this._elementBlock.querySelector('.element__number-likes').textContent = likes;
     }
     isLiked(){   
-        if(this._elementLike.classList.contains('element__like_active'))
-            return true;
-        else
-            return false;
+        return this._elementLike.classList.contains('element__like_active')
     }
 }
