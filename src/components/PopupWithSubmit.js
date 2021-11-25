@@ -19,10 +19,4 @@ export class PopupWithSubmit extends Popup {
         super.setEventListeners();
         this._popup.querySelector('.popup-confirm__confirm-btn').addEventListener("click", this._submitConfirmationBind);
     }
-    
-    close(){
-        super.close()
-        this._popup.querySelector('.popup-confirm__confirm-btn').removeEventListener("submit", this._submitConfirmationBind);
-    }
-  
   }
