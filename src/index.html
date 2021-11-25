@@ -12,7 +12,10 @@
     </header>
     <main class="main">
         <section class="profile">
-            <img src="./images/avatar-image.jpg" alt="Аватар профиля" class="profile__image">
+            <div class="profile__icon">
+                <img src="#" alt="Аватар профиля" class="profile__image">
+                <div class="profile__image-filter"></div>
+            </div>
             <div class="profile__info">    
                 <h1 class="profile__name">Жак-Ив Кусто</h1>
                 <button type="button" class="profile__edit-button"></button>
@@ -33,7 +36,10 @@
                     </div>
                     <div class="element__description">
                         <h2 class="element__text">Карачаевск</h2>
-                        <button type="button" class="element__like"></button>
+                        <div class="elemnt__likes">
+                            <button type="button" class="element__like"></button>
+                            <p class="element__number-likes">0</p>
+                        </div>
                     </div>
                 </div>
             </template>
@@ -86,6 +92,38 @@
                 </button>
                 <img src="#" alt="Картинка" class="popup-image__image">
                 <p class="popup-image__text"></p>
+            </div>
+        </div>
+        <div class="popup popup-confirm">
+            <div class="popup__overlay"></div>
+            <div class="popup__container">
+                <button class="popup__close confirm-close" type="button">
+                    <img src="./images/cross.svg" alt="Крестик" class="popup__cross-button">
+                </button>
+                <div class="popup__content">
+                    <h2 class="popup__title">Вы уверены?</h2>
+                    <button type="button" class="popup-confirm__confirm-btn">
+                        Да
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="popup update-avatar-popup">
+            <div class="popup__overlay"></div>
+            <div class="popup__container">
+                <button class="popup__close element-close" type="button">
+                    <img src="./images/cross.svg" alt="Крестик" class="popup__cross-button">
+                </button>
+                <div class="popup__content">
+                    <h2 class="popup__title">Обновить аватар</h2>
+                    <form class="input input_update-avatar" name="form-input-update-avatar">
+                        <input type="url" placeholder="Ссылка на аватар" class="input__text input__text_type_link" value="" id="linkAvatar" name="link" required>
+                        <span id="linkAvatar-error" class="input__error"></span>
+                        <button type="submit" class="input__save-btn">
+                            Сохранить
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
     </main>

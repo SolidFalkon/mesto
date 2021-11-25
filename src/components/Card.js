@@ -1,8 +1,14 @@
 export default class Card{
-    constructor({data, handleCardClick}, cardSelector){
+    constructor({data, handleCardClick, handleLikeClick, handleDeleteIconClick}, cardSelector, myId){
         this._name = data.name;
         this._link = data.link;
+        this._likes = data.likes;
+        this._myId = myId;
+        this._idOwner = data.owner._id;
+        this._cardId = data._id;
         this._handleCardClick = handleCardClick;
+        this._handleLikeClick = handleLikeClick;
+        this._handleDeleteIconClick = handleDeleteIconClick;
         this._cardSelector = cardSelector;
     }
     _getTemplate() {
@@ -15,24 +21,21 @@ export default class Card{
         this._elementBlock.querySelector('.element__image').src = this._link;
         this._elementBlock.querySelector('.element__image').alt = this._name;
         this._elementBlock.querySelector('.element__text').textContent = this._name;
+        this._elementBlock.querySelector('.element__number-likes').textContent = this._likes.length;
+        if (this._likes.findIndex(item => item._id == this._myId) != -1)
+        this._elementBlock.querySelector('.element__like').classList.toggle('element__like_active')
         this._setListenerElement();
         return this._elementBlock;
     }
     _setListenerElement(){
-        this._elementBlock.querySelector('.element__delete').addEventListener("click", () => {
-            this._deleteElement()});
+        if (this._idOwner == this._myId)
+            this._elementBlock.querySelector('.element__delete').addEventListener("click", () => {
+                this._handleDeleteIconClick(this._elementBlock)});
+        else
+            this._elementBlock.querySelector('.element__delete').classList.add('element__delete_disabled')
         this._elementBlock.querySelector('.element__like').addEventListener("click", () => {
-            this._like()});
+            this._handleLikeClick(this._elementBlock)});
         this._elementBlock.querySelector('.element__image-button').addEventListener("click", () => {
             this._handleCardClick()});
-    }
-    _like(){
-        const likeButoon = this._elementBlock.querySelector('.element__like')
-        likeButoon.classList.toggle('element__like_active');
-    }
-    
-    _deleteElement(){
-        this._elementBlock.remove();
-        this._elementBlock = null;
     }
 }
