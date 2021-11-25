@@ -25,7 +25,7 @@ export default class Card{
         this._elementBlock.querySelector('.element__number-likes').textContent = this._likes.length;
         this._elementLike = this._elementBlock.querySelector('.element__like');
         if (this._likes.findIndex(item => item._id == this._myId) != -1)
-            this.isLiked();
+            this._elementLike.classList.toggle('element__like_active');
         this._setListenerElement();
         return this._elementBlock;
     }
@@ -41,10 +41,10 @@ export default class Card{
             this._handleCardClick()});
     }
     updateLikes(likes){
+        this._elementLike.classList.toggle('element__like_active');
         this._elementBlock.querySelector('.element__number-likes').textContent = likes;
     }
-    isLiked(){
-        this._elementLike.classList.toggle('element__like_active');
+    isLiked(){   
         if(this._elementLike.classList.contains('element__like_active'))
             return true;
         else

@@ -55,7 +55,7 @@ function createCard(item){
     },
     
     handleLikeClick: () =>{
-      if(card.isLiked()){
+      if(!card.isLiked()){
         api.putLike(item).then(data => {
           card.updateLikes(data.likes.length)
         })
